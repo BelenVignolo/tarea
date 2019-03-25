@@ -1,0 +1,17 @@
+automationFramework\utils\Constants.class
+automationFramework\utils\GetProperties.class
+automationFramework\utils\WebDriverUtils$1.class
+automationFramework\utils\datatypes\Wait.class
+openCart\pages\inicioPage.class
+automationFramework\utils\ExcelUtils.class
+automationFramework\tests\BaseTest.class
+automationFramework\handlers\PageObjectsHandler.class
+automationFramework\tests\BaseTest$1.class
+automationFramework\utils\WebDriverUtils.class
+openCart\bases\openCartBasePage.class
+openCart\pageObjectsHandler\openCartPageObjectsHandler.class
+openCart\bases\openCartBaseTest.class
+automationFramework\utils\Utils.class
+automationFramework\pageObjects\BasePage.class
+openCart\pages\loginPage.class
+automationFramework\utils\datatypes\BrowserType.class
