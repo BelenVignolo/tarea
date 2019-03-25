@@ -42,8 +42,6 @@ public class inicioPage extends openCartBasePage {
     WebElement AddCanonToWishListButton;
 
 */
-    @FindBy(xpath = "//img[@title='Your Store']")
-    WebElement homeButton;
 
     public loginPage goToLogin(){
         this.cosaButton.click();
@@ -59,19 +57,14 @@ public class inicioPage extends openCartBasePage {
         this.logoutButton.click();
     }
 
-    public void addToCart(Integer elementoId){
-        WebElement a=driver.findElement(By.cssSelector(".product-layout:nth-child("+ elementoId +") button:nth-child(2)"));
+    public void addToCart(String elemento){
+        WebElement a=driver.findElement(By.xpath("//a[text()='" + elemento + "']/../../..//button[contains(@onclick, 'cart.add')]"));
         highlighElement(a);
         a.click();
         addWait(Wait.LONG_WAIT);
     }
 
-    public inicioPage goToInicio(){
-        highlighElement(homeButton);
-        homeButton.click();
-        addWait(Wait.LONG_WAIT);
-        return pageObjectsHandler.getInicioPage();
-    }
+
 }
 
 

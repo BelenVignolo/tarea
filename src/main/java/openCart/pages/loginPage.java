@@ -20,6 +20,9 @@ public class loginPage extends openCartBasePage {
     @FindBy(css = "h2")
     WebElement h2;
 
+    @FindBy(xpath = "//img[@title='Your Store']")
+    WebElement homeButton;
+
     public loginPage(WebDriver driver, openCartPageObjectsHandler instance) {
         super(driver, instance);
     }
@@ -40,6 +43,11 @@ public class loginPage extends openCartBasePage {
         return h2.getText().contains("My Account");
 
     }
-
+    public inicioPage goToInicio(){
+        highlighElement(homeButton);
+        homeButton.click();
+        addWait(Wait.LONG_WAIT);
+        return pageObjectsHandler.getInicioPage();
+    }
 
 }
