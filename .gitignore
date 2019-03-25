@@ -3,3 +3,4 @@
 target/
 tarea.iml
 .idea/workspace.xml
+*.xml
