@@ -4,3 +4,4 @@ target/
 tarea.iml
 .idea/workspace.xml
 *.xml
+.idea/compiler.xml
