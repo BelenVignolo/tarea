@@ -104,7 +104,7 @@ public class ExcelUtils {
     }
 
 
-    public static Object[][] getTableArray(String FilePath, String SheetName, int iTestCaseRow)    throws Exception
+   /* public static Object[][] getTableArray(String FilePath, String SheetName, int iTestCaseRow)    throws Exception
 
     {
 
@@ -164,9 +164,9 @@ public class ExcelUtils {
 
         return(tabArray);
 
-    }
+    }*/
 
-    public static Object[][] getTableArray(String FilePath, String SheetName) throws Exception {
+    public static Object[][] getTableArray(String FilePath, String SheetName, int totalCols) throws Exception {
 
         String[][] tabArray = null;
 
@@ -182,15 +182,13 @@ public class ExcelUtils {
 
             int startRow = 1;
 
-            int startCol = 1;
+            int startCol = 0;
 
             int ci,cj;
 
             int totalRows = ExcelWSheet.getLastRowNum();
 
             // you can write a function as well to get Column count
-
-            int totalCols = 2;
 
             tabArray=new String[totalRows][totalCols];
 
@@ -200,7 +198,7 @@ public class ExcelUtils {
 
                 cj=0;
 
-                for (int j=startCol;j<=totalCols;j++, cj++){
+                for (int j=startCol;j<totalCols;j++, cj++){
 
                     tabArray[ci][cj]=getCellData(i,j);
 

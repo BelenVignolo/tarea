@@ -14,6 +14,7 @@ public class inicioPage extends openCartBasePage {
         super(driver, instance);
     }
 
+
     @FindBy(className = "caret")
     WebElement cosaButton;
 
@@ -22,6 +23,14 @@ public class inicioPage extends openCartBasePage {
 
     @FindBy(linkText = "Logout")
     WebElement logoutButton;
+
+    @FindBy(linkText = "Gift Certificates")
+    WebElement giftCertificateButton;
+
+    @FindBy(css = "[title=\"Shopping Cart\"]")
+    WebElement carritoButton;
+
+
     /*
     @FindBy(css =".product-layout:nth-child(1) .fa-shopping-cart")
     WebElement AddMcBookToCartButton;
@@ -64,6 +73,23 @@ public class inicioPage extends openCartBasePage {
         addWait(Wait.LONG_WAIT);
     }
 
+    public void addToWishList(String elemento){
+        WebElement a=driver.findElement(By.xpath("//a[text()='" + elemento + "']/../../..//button[contains(@onclick, 'wishlist.add')]"));
+        highlighElement(a);
+        a.click();
+        addWait(Wait.LONG_WAIT);
+    }
+
+    public giftCardPage goToGiftCardPage(){
+        highlighElement(giftCertificateButton);
+        giftCertificateButton.click();
+        return pageObjectsHandler.getGiftCardPage();
+    }
+
+    public compraPage goToCompraPage(){
+        carritoButton.click();
+        return pageObjectsHandler.getCompraPage();
+    }
 
 }
 

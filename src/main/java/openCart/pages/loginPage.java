@@ -23,6 +23,9 @@ public class loginPage extends openCartBasePage {
     @FindBy(xpath = "//img[@title='Your Store']")
     WebElement homeButton;
 
+    @FindBy(linkText = "Change your password")
+    WebElement changePswdButton;
+
     public loginPage(WebDriver driver, openCartPageObjectsHandler instance) {
         super(driver, instance);
     }
@@ -50,4 +53,10 @@ public class loginPage extends openCartBasePage {
         return pageObjectsHandler.getInicioPage();
     }
 
+    public changePasswordPage goToChangePswd(){
+        highlighElement(changePswdButton);
+        changePswdButton.click();
+        addWait(Wait.LONG_WAIT);
+        return pageObjectsHandler.getChangePasswordPage();
+    }
 }

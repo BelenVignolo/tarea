@@ -2,6 +2,8 @@ package automationFramework.tests;
 
 import automationFramework.utils.GetProperties;
 import automationFramework.utils.datatypes.BrowserType;
+import openCart.pageObjectsHandler.openCartPageObjectsHandler;
+import openCart.pages.*;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,6 +25,13 @@ import static automationFramework.utils.Utils.applyDefaultIfMissing;
 public class BaseTest {
 
     protected static WebDriver driver;
+
+    protected openCartPageObjectsHandler pageObjectsHandler;
+    protected loginPage login;
+    protected inicioPage inicio;
+    protected giftCardPage giftCard;
+    protected changePasswordPage changePswd;
+    protected compraPage compra;
 
 
     protected static String environment = applyDefaultIfMissing(System.getProperty("environment"), "QA");
@@ -80,6 +89,7 @@ public class BaseTest {
                 driver = new FirefoxDriver(capabilities);
         }
 
+            pageObjectsHandler = openCartPageObjectsHandler.getInstance(driver);
         try {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             navigateToHome();
@@ -90,7 +100,8 @@ public class BaseTest {
 
     @AfterMethod
     public void after(Method method) {
-        driver.close();
+        openCartPageObjectsHandler.nullInstance();
+        driver.quit();
     }
 
     private void navigateToHome() {

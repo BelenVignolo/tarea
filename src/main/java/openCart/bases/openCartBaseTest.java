@@ -10,17 +10,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 public class openCartBaseTest extends BaseTest {
-    protected openCartPageObjectsHandler pageObjectsHandler;
-    protected loginPage login;
-    protected inicioPage inicio;
 
-    @BeforeClass
+
+    @BeforeMethod
     public void initialize() {
-        pageObjectsHandler = openCartPageObjectsHandler.getInstance(driver);
+
     }
 
-    @AfterClass
+    @AfterMethod
     public void dispose() {
-        openCartPageObjectsHandler.getInstance(null);
+
     }
 }

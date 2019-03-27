@@ -1,3 +1,4 @@
+import automationFramework.tests.BaseTest;
 import automationFramework.utils.ExcelUtils;
 import openCart.bases.openCartBaseTest;
 import openCart.pages.inicioPage;
@@ -12,7 +13,7 @@ import java.io.IOException;
 
 import static automationFramework.utils.Utils.applyDefaultIfMissing;
 
-public class Login extends openCartBaseTest {
+public class Login extends BaseTest {
 
 
     @Test(dataProvider="Authentication")
@@ -44,8 +45,8 @@ public class Login extends openCartBaseTest {
 
     @DataProvider
     public Object[][] Authentication() throws Exception{
-        String excelFile = applyDefaultIfMissing(System.getProperty("DATASOURCE"), "src\\main\\resources\\Data\\excelEntrada.xlsx");
-        Object[][] testObjArray = ExcelUtils.getTableArray(excelFile,"Sheet1");
+        String excelFile = applyDefaultIfMissing(System.getProperty("DATASOURCELOGIN"), "src\\main\\resources\\Data\\excelEntrada.xlsx");
+        Object[][] testObjArray = ExcelUtils.getTableArray(excelFile,"Sheet1",2);
 
         return (testObjArray);
 

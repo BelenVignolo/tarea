@@ -1,17 +1,18 @@
 import automationFramework.utils.ExcelUtils;
-import openCart.bases.openCartBaseTest;
+import automationFramework.tests.BaseTest;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 import static automationFramework.utils.Utils.applyDefaultIfMissing;
 
-public class ShoppingCart extends openCartBaseTest {
+public class ShoppingCart extends BaseTest {
 
-    @Test
-    public void ejecutar() throws InterruptedException,  IOException{
+    @Test(dataProvider="Authentication")
+    public void ejecutar(String usuario, String password, String producto) throws InterruptedException,  IOException{
 
         String excelFile = applyDefaultIfMissing(System.getProperty("dataAddToCart"), "src\\main\\resources\\Data\\AddToCartEntrada.xlsx");
 
@@ -21,15 +22,21 @@ public class ShoppingCart extends openCartBaseTest {
 
         inicio=pageObjectsHandler.getInicioPage();
         login=inicio.goToLogin();
-        login.login("a@a.aa","aaaa");
+        login.login(usuario,password);
         inicio=login.goToInicio();
 
-        inicio.addToCart("MacBook");
-        inicio.addToCart("iPhone");
-        inicio.addToCart("Apple Cinema 30\"");
+        inicio.addToCart(producto);
+;
 
     }
 
+    @DataProvider
+    public Object[][] Authentication() throws Exception{
+        String excelFile = applyDefaultIfMissing(System.getProperty("DATASOURCE2"), "src\\main\\resources\\Data\\AddToCartEntrada.xlsx");
+        Object[][] testObjArray = ExcelUtils.getTableArray(excelFile,"Sheet1",3);
 
+        return (testObjArray);
+
+    }
 
 }
